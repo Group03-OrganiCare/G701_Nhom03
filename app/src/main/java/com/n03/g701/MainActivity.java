@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     ListView lvProduct;
-    ArrayList<Product> arrayList;
+    ArrayList<Product> products;
     ProductAdapter productAdapter;
 
 
@@ -23,22 +23,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         
         linkViews();
-        addEvents();
         initData();
+        loadData();
+
     }
 
     private void linkViews() {
         lvProduct= findViewById(R.id.lvProduct);
     }
 
-    private void addEvents() {
-        productAdapter = new ProductAdapter(MainActivity.this, R.layout.item_listview, initData());
-        lvProduct.setAdapter(productAdapter);
+    private void initData() {
+        products = new ArrayList<Product>();
+        products.add(new Product("123", "Laptop", "ASUS", 15000000, R.drawable.banner));
+
     }
 
-    private ArrayList<Product> initData() {
-
-        return arrayList;
-
+    private void loadData() {
+        productAdapter = new ProductAdapter(MainActivity.this, R.layout.item_listview, products);
+        lvProduct.setAdapter(productAdapter);
     }
 }
