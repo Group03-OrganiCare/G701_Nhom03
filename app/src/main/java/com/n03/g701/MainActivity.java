@@ -2,10 +2,7 @@ package com.n03.g701;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 
 import com.n03.g701.adapter.ProductAdapter;
@@ -16,9 +13,9 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     ListView lvProduct;
-    ArrayList<Product> arrayList;
+    ArrayList<Product> products;
     ProductAdapter productAdapter;
-    Button btnAdd;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,30 +23,38 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         
         linkViews();
-        addEvents();
         initData();
+        loadData();
+
     }
 
-    private void linkViews()
-    {
+    private void linkViews() {
         lvProduct= findViewById(R.id.lvProduct);
-        btnAdd = findViewById(R.id.btnAddProduct);
     }
 
     private void addEvents() {
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Product_Add.class);
-                startActivity(intent);
-            }
-        });
         productAdapter = new ProductAdapter(MainActivity.this, R.layout.item_listview, initData());
         lvProduct.setAdapter(productAdapter);
     }
+
     private ArrayList<Product> initData() {
 
-        return arrayList;
+                Button btnConfirmDelete = dialog.findViewById(R.id.btnConfirmDelete);
+                btnConfirmDelete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
+                    }
+                });
+                Button btnCancelDelete = dialog.findViewById(R.id.btnCancelDelete);
+                btnCancelDelete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+            }
+        });
     }
 }
