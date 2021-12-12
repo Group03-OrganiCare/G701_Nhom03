@@ -68,7 +68,7 @@
         android:id="@+id/btnCapture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Capture Photo"
+        android:text="Chèn hình ảnh"
         android:layout_gravity="right"
         android:drawableLeft="@drawable/ic_baseline_photo_camera_24"
         android:layout_marginTop="10dp"
@@ -90,14 +90,14 @@
             android:id="@+id/btnSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Save"
+            android:text="Lưu"
             android:backgroundTint="#03A9F4"/>
         <Button
             android:id="@+id/btnCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="Close"
+            android:text="Đóng"
             android:backgroundTint="#03A9F4"/>
     </LinearLayout>
 
