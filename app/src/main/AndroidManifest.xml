@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.G701_Nhom03">
         <activity
+            android:name=".Product_Detail"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
