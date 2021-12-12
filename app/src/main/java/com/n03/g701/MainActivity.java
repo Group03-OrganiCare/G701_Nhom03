@@ -2,7 +2,11 @@ package com.n03.g701;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.n03.g701.adapter.ProductAdapter;
@@ -15,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     ListView lvProduct;
     ArrayList<Product> products;
     ProductAdapter productAdapter;
+
+    ImageView imvDelete;
 
 
     @Override
@@ -29,7 +35,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void linkViews() {
+
         lvProduct= findViewById(R.id.lvProduct);
+        imvDelete = findViewById(R.id.imvDelete);
     }
 
     private void initData() {
@@ -41,5 +49,31 @@ public class MainActivity extends AppCompatActivity {
     private void loadData() {
         productAdapter = new ProductAdapter(MainActivity.this, R.layout.item_listview, products);
         lvProduct.setAdapter(productAdapter);
+
+        //delete product
+        imvDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Dialog dialog = new Dialog(MainActivity.this);
+                dialog.setContentView(R.layout.custom_delete_dialog);
+                dialog.setCanceledOnTouchOutside(false);
+
+                Button btnConfirmDelete = dialog.findViewById(R.id.btnConfirmDelete);
+                btnConfirmDelete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
+                Button btnCancelDelete = dialog.findViewById(R.id.btnCancelDelete);
+                btnCancelDelete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+            }
+        });
     }
 }
